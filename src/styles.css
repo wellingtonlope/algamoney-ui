@@ -51,6 +51,6 @@ label {
   justify-content: space-between;
 }
 
-button {
+button, .ui-button {
   margin-right: .5em;
 }
