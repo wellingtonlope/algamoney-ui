@@ -18,7 +18,7 @@
                     [inline]="false"
                     [readonlyInput]="false"
                     [showIcon]="false"></p-calendar>
-<!--        <app-message [control]="vencimetno" error="required" text="Informe uma data de vencimento"></app-message>-->
+        <app-message [control]="vencimetno" error="required" text="Informe uma data de vencimento"></app-message>
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
         <label for="recebimento">
@@ -32,10 +32,10 @@
                name="descricao"
                ngModel #descricao="ngModel"
                required minlength="5"/>
-<!--        <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>-->
-<!--        <app-message [control]="descricao" error="minlength"-->
-<!--                     text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres">-->
-<!--        </app-message>-->
+        <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
+        <app-message [control]="descricao" error="minlength"
+                     text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres">
+        </app-message>
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label for="valor">Valor</label>
@@ -46,21 +46,21 @@
                required
                currencyMask
                [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative: false }"/>
-<!--        <app-message [control]="valor" error="required" text="Informe um valor"></app-message>-->
+        <app-message [control]="valor" error="required" text="Informe um valor"></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="categoria">Categoria</label>
         <p-dropdown [options]="categorias" id="categoria" placeholder="Selecione"
                     name="categoria" ngModel #categoria="ngModel" required>
         </p-dropdown>
-<!--        <app-message [control]="categoria" error="required" text="Informe uma categoria"></app-message>-->
+        <app-message [control]="categoria" error="required" text="Informe uma categoria"></app-message>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="pessoa">Pessoa</label>
         <p-dropdown [options]="pessoas" id="pessoa" [filter]="true" placeholder="Selecione"
                     name="pessoa" ngModel #pessoa="ngModel" required>
         </p-dropdown>
-<!--        <app-message [control]="pessoa" error="required" text="Informe uma pessoa"></app-message>-->
+        <app-message [control]="pessoa" error="required" text="Informe uma pessoa"></app-message>
       </div>
       <div class="ui-g-12 ui-fluid">
         <label for="observacao">Observação</label>

@@ -17,12 +17,14 @@ import { TableModule } from 'primeng/table';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     CurrencyMaskModule,
     FormsModule,
+    SharedModule,
     SelectButtonModule,
     CalendarModule,
     DropdownModule,
