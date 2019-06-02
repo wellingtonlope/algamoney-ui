@@ -27,7 +27,11 @@
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label for="valor">Valor</label>
-        <input pInputText type="text" id="valor" placeholder="0,00"/>
+        <input pInputText id="valor" placeholder="0,00"
+               [(ngModel)]="currency"
+               [ngModelOptions]="{standalone: true}"
+               currencyMask
+               [options]="{prefix: '', thousands: '.', decimal: ',', allowNegative: false }"/>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="categoria">Categoria</label>

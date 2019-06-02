@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LancamentoCadastroComponent implements OnInit {
 
+  currency: number;
   tipos = [
     {label: 'Receita', value: 'RECEITA'},
     {label: 'Despesa', value: 'DESPESA'}

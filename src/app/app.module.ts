@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 import {
   ButtonModule,
-  CalendarModule, DropdownModule,
+  CalendarModule,
+  DropdownModule,
   InputTextareaModule,
   InputTextModule,
   SelectButtonModule,
@@ -30,6 +33,7 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CurrencyMaskModule,
     InputTextModule,
     ButtonModule,
     TableModule,
@@ -37,7 +41,8 @@ import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-ca
     InputTextareaModule,
     CalendarModule,
     SelectButtonModule,
-    DropdownModule
+    DropdownModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
