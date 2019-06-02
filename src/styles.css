@@ -50,6 +50,6 @@ label {
   justify-content: space-between;
 }
 
-.botoes-acoes {
-  margin: 0 3px;
+button {
+  margin-right: .5em;
 }
