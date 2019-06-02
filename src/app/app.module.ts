@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { ButtonModule, InputTextModule } from 'primeng/primeng';
-import { TableModule } from 'primeng/table';
 
 import { AppComponent } from './app.component';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     InputTextModule,
     ButtonModule,
-    TableModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
