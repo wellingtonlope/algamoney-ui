@@ -5,11 +5,13 @@ import { ButtonModule, InputTextModule, TooltipModule } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import { TableModule } from 'primeng/table';
+import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LancamentosPesquisaComponent
   ],
   imports: [
     BrowserModule,
