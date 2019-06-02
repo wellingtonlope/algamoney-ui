@@ -35,6 +35,7 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     CurrencyMaskModule,
     InputTextModule,
@@ -45,7 +46,6 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
     CalendarModule,
     SelectButtonModule,
     DropdownModule,
-    FormsModule,
     InputMaskModule
   ],
   providers: [],
