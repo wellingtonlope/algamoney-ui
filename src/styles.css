@@ -15,3 +15,29 @@ label {
     margin: 0 auto;
   }
 }
+
+.col-valor-header {
+  width: 120px;
+}
+
+.col-data-header {
+  width: 120px;
+}
+
+.col-valor-body {
+  text-align: right;
+}
+.col-data-body {
+  width: 120px;
+  text-align: center;
+}
+
+.col-acoes-header {
+  width: 100px;
+}
+
+.col-acoes-body {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
