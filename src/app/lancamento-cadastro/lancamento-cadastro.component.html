@@ -31,11 +31,11 @@
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="categoria">Categoria</label>
-        <input pInputText type="text" id="categoria"/>
+        <p-dropdown [options]="categorias" id="categoria" placeholder="Selecione"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label for="pessoa">Pessoa</label>
-        <input pInputText type="text" id="pessoa"/>
+        <p-dropdown [options]="pessoas" id="pessoa" [filter]="true" placeholder="Selecione"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-fluid">
         <label for="observacao">Observação</label>
