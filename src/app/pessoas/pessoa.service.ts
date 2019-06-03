@@ -35,4 +35,9 @@ export class PessoaService {
 
     return this.http.get(this.pessoasUrl, {headers});
   }
+
+  excluir(codigo: number): Observable<any> {
+    const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`, {headers});
+  }
 }

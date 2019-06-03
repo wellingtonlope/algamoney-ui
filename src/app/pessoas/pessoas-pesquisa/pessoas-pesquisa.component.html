@@ -20,7 +20,7 @@
       <p-table [value]="pessoas" [responsive]="true"
                [paginator]="true" [rows]="filtro.itensPorPagina"
                [lazy]="true" [totalRecords]="totalRegistros"
-               (onLazyLoad)="aoMudarPagina($event)">
+               (onLazyLoad)="aoMudarPagina($event)" #tabela>
         <ng-template pTemplate="header">
           <tr>
             <th>Nome</th>
@@ -44,7 +44,7 @@
             <td class="col-acoes-body">
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-              ></button>
+              (click)="confirmarExclusao(pessoa)"></button>
             </td>
           </tr>
         </ng-template>
