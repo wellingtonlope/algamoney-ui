@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { LancamentoService } from './lancamento.service';
 
 import {
   ButtonModule,
@@ -22,6 +24,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     CurrencyMaskModule,
     FormsModule,
     SharedModule,
@@ -42,6 +45,9 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent
+  ],
+  providers: [
+    LancamentoService
   ]
 })
 export class LancamentosModule {
