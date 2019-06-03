@@ -7,18 +7,18 @@
 
       <div class="ui-g-12 ui-fluid">
         <label for="descricao">Descrição</label>
-        <input pInputText id="descricao" type="text" name="descricao" [(ngModel)]="descricao"/>
+        <input pInputText id="descricao" type="text" name="descricao" [(ngModel)]="filtro.descricao"/>
       </div>
 
       <div class="ui-g-12">
         <label for="vencimentoInicio" style="display: block">Vencimento</label>
         <p-calendar id="vencimentoInicio" dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
-                    name="vencimentoInicio" [(ngModel)]="dataVencimentoInicio">
+                    name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio">
         </p-calendar>
 
         <label for="vencimentoFim">até</label>
         <p-calendar id="vencimentoFim" dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
-                    name="vencimentoFim" [(ngModel)]="dataVencimentoFim">
+                    name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim">
         </p-calendar>
       </div>
 
