@@ -29,6 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Algamoney api
 
 ``` bash
-java -jar algamoney-api-1.0.0-SNAPSHOT.jar --spring.datasource.username=root 
---spring.datasource.password=root --algamoney.origin-permitida=http://localhost:4200
+java -jar algamoney-api-1.0.0-SNAPSHOT.jar --spring.datasource.username=root --spring.datasource.password=root --algamoney.origin-permitida=http://localhost:4200
 ```

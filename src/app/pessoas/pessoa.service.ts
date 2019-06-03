@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+export class PessoaFiltro {
+  nome: string;
+  pagina = 0;
+  itensPorPagina = 5;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PessoaService {
+
+  pessoasUrl = 'http://localhost:8080/pessoas';
+
+  constructor(private http: HttpClient) {
+  }
+
+  pesquisar(filtro: PessoaFiltro): Observable<any> {
+    const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
+
+    const params = {
+      nome: filtro.nome || '',
+      page: filtro.pagina.toString(),
+      size: filtro.itensPorPagina.toString()
+    };
+
+    return this.http.get(this.pessoasUrl, {headers, params});
+  }
+
+  listarTodas(): Observable<any> {
+    const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
+
+    return this.http.get(this.pessoasUrl, {headers});
+  }
+}
