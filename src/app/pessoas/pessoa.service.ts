@@ -40,4 +40,12 @@ export class PessoaService {
     const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
     return this.http.delete(`${this.pessoasUrl}/${codigo}`, {headers});
   }
+
+  mudarStatus(codigo: number, ativo: boolean): Observable<any> {
+    const headers = {
+      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==',
+      'Content-Type': 'application/json'
+    };
+    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, {headers});
+  }
 }

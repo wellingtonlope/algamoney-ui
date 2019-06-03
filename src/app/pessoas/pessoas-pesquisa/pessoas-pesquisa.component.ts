@@ -61,4 +61,18 @@ export class PessoasPesquisaComponent implements OnInit {
         this.errorHandlerService.handle(erro);
       });
   }
+
+  mudarStatus(codigo: number, ativo: boolean) {
+    this.pessoaService.mudarStatus(codigo, ativo)
+      .subscribe(() => {
+        this.tabela.reset();
+        this.messageService.add({
+          severity: 'success',
+          summary: '',
+          detail: `Pessoa ${ativo ? 'ativada' : 'desativada'} com sucesso!`
+        });
+      }, (erro: any) => {
+        this.errorHandlerService.handle(erro);
+      });
+  }
 }
