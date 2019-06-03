@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LazyLoadEvent } from 'primeng/api';
+
 import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 
 @Component({
@@ -7,6 +9,8 @@ import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
 export class LancamentosPesquisaComponent implements OnInit {
+
+  totalRegistros = 0;
   filtro = new LancamentoFiltro();
   lancamentos = [];
 
@@ -14,13 +18,21 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pesquisar();
+    // this.pesquisar();
   }
 
-  pesquisar() {
+  aoMudarPagina(event: LazyLoadEvent) {
+    const pagina = event.first / event.rows;
+    this.pesquisar(pagina);
+  }
+
+  pesquisar(pagina = 0) {
+    this.filtro.pagina = pagina;
+
     this.lancamentoService.pesquisar(this.filtro)
       .subscribe((response: any) => {
         this.lancamentos = response.content;
+        this.totalRegistros = response.totalElements;
       });
   }
 }
