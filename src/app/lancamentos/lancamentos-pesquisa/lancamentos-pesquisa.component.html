@@ -11,11 +11,15 @@
       </div>
 
       <div class="ui-g-12">
-        <label for="vencimento" style="display: block">Vencimento</label>
-        <input pInputText id="vencimento" type="text" style="width: 95px"/>
+        <label for="vencimentoInicio" style="display: block">Vencimento</label>
+        <p-calendar id="vencimentoInicio" dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
+                    name="vencimentoInicio" [(ngModel)]="dataVencimentoInicio">
+        </p-calendar>
 
-        <label for="ate">até</label>
-        <input pInputText id="ate" type="text" style="width: 95px"/>
+        <label for="vencimentoFim">até</label>
+        <p-calendar id="vencimentoFim" dateFormat="dd/mm/yy" [inputStyle]="{ width: '95px' }"
+                    name="vencimentoFim" [(ngModel)]="dataVencimentoFim">
+        </p-calendar>
       </div>
 
       <div class="ui-g-12">
@@ -52,6 +56,13 @@
             <td class="col-acoes-body">
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td [attr.colspan]="6">
+              Nenhum lançamento encontrado
             </td>
           </tr>
         </ng-template>
