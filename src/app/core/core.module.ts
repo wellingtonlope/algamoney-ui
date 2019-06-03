@@ -7,6 +7,7 @@ import { ConfirmationService, ConfirmDialogModule, MessageService } from 'primen
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
+import { CategoriaService } from '../categorias/categoria.service';
 
 registerLocaleData(localePt, 'pt');
 
@@ -28,7 +29,8 @@ registerLocaleData(localePt, 'pt');
     ErrorHandlerService,
     MessageService,
     ConfirmationService,
-    {provide: LOCALE_ID, useValue: 'pt'}
+    {provide: LOCALE_ID, useValue: 'pt'},
+    CategoriaService
   ]
 })
 export class CoreModule {
