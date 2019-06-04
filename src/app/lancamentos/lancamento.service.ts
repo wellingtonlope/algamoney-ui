@@ -59,7 +59,6 @@ export class LancamentoService {
       Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==',
       'Content-type': 'application/json'
     };
-    console.log(lancamento);
     return this.http.put(`${this.lancamentosUrl}/${lancamento.codigo}`,
       JSON.stringify(lancamento), {headers}).pipe(
       map(item => {
