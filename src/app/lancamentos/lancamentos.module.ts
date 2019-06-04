@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LancamentoService } from './lancamento.service';
+import { RouterModule } from '@angular/router';
 
 import {
   ButtonModule,
@@ -19,6 +19,7 @@ import { TableModule } from 'primeng/table';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { SharedModule } from '../shared/shared.module';
+import { LancamentoService } from './lancamento.service';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { SharedModule } from '../shared/shared.module';
     InputTextModule,
     InputTextareaModule,
     ButtonModule,
-    TooltipModule
+    TooltipModule,
+    RouterModule
   ],
   declarations: [
     LancamentoCadastroComponent,

@@ -1,6 +1,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { CommonModule, registerLocaleData } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, ConfirmDialogModule, MessageService } from 'primeng/primeng';
@@ -18,7 +19,8 @@ registerLocaleData(localePt, 'pt');
   imports: [
     CommonModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    RouterModule
   ],
   exports: [
     NavbarComponent,

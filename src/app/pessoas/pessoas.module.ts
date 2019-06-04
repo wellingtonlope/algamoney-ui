@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { ButtonModule, InputMaskModule, InputTextModule, TooltipModule } from 'primeng/primeng';
@@ -24,7 +25,8 @@ import { SharedModule } from '../shared/shared.module';
     ButtonModule,
     TableModule,
     TooltipModule,
-    InputMaskModule
+    InputMaskModule,
+    RouterModule
   ],
   exports: [
     PessoaCadastroComponent,
