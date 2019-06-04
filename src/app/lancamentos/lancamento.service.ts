@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
+import { map } from 'rxjs/operators';
 
 import { Lancamento } from '../core/model';
 
@@ -50,5 +52,45 @@ export class LancamentoService {
       'Content-type': 'application/json'
     };
     return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento), {headers});
+  }
+
+  atualizar(lancamento: Lancamento): Observable<any> {
+    const headers = {
+      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==',
+      'Content-type': 'application/json'
+    };
+    return this.http.put(`${this.lancamentosUrl}/${lancamento.codigo}`,
+      JSON.stringify(lancamento), {headers}).pipe(
+      map(item => {
+        const lancamentoAlterado = item as Lancamento;
+        this.converterStringsParaDatas([lancamentoAlterado]);
+        return lancamentoAlterado;
+      })
+    );
+  }
+
+  buscarPorCodigo(codigo: number): Observable<any> {
+    const headers = {
+      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+    };
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`, {headers}).pipe(
+      map(item => {
+        const lancamento = item as Lancamento;
+        this.converterStringsParaDatas([lancamento]);
+        return lancamento;
+      })
+    );
+  }
+
+  private converterStringsParaDatas(lancamentos: Lancamento[]) {
+    for (const lancamento of lancamentos) {
+      lancamento.dataVencimento = moment(lancamento.dataVencimento,
+        'YYYY-MM-DD').toDate();
+
+      if (lancamento.dataPagamento) {
+        lancamento.dataPagamento = moment(lancamento.dataPagamento,
+          'YYYY-MM-DD').toDate();
+      }
+    }
   }
 }
