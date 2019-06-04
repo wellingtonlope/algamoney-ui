@@ -32,6 +32,10 @@ export class AuthService {
     );
   }
 
+  temPermissao(permissao: string) {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
   private armazenarToken(token: string) {
     const jwtHelperService: JwtHelperService = new JwtHelperService();
     this.jwtPayload = jwtHelperService.decodeToken(token);
