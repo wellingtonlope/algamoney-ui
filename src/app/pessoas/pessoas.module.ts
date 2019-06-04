@@ -28,10 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     InputMaskModule,
     RouterModule
   ],
-  exports: [
-    PessoaCadastroComponent,
-    PessoasPesquisaComponent
-  ]
+  exports: []
 })
 export class PessoasModule {
 }
