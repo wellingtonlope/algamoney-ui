@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
 import { CategoriaService } from '../categorias/categoria.service';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { AuthService } from '../seguranca/auth.service';
 
 registerLocaleData(localePt, 'pt');
 
@@ -34,7 +35,8 @@ registerLocaleData(localePt, 'pt');
     MessageService,
     ConfirmationService,
     {provide: LOCALE_ID, useValue: 'pt'},
-    CategoriaService
+    CategoriaService,
+    AuthService
   ]
 })
 export class CoreModule {
