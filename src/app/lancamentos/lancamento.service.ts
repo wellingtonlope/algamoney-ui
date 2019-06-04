@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 
+import { Lancamento } from '../core/model';
+
 export class LancamentoFiltro {
   descricao: string;
   dataVencimentoInicio: Date;
@@ -40,5 +42,13 @@ export class LancamentoService {
   excluir(codigo: number): Observable<any> {
     const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
     return this.http.delete(`${this.lancamentosUrl}/${codigo}`, {headers});
+  }
+
+  adicionar(lancamento: Lancamento): Observable<any> {
+    const headers = {
+      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==',
+      'Content-type': 'application/json'
+    };
+    return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento), {headers});
   }
 }

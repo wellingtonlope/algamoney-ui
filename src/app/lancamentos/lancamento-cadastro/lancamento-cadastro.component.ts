@@ -1,10 +1,13 @@
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
+import { MessageService } from 'primeng/api';
+
 import { CategoriaService } from '../../categorias/categoria.service';
 import { ErrorHandlerService } from '../../core/error-handler.service';
 import { PessoaService } from '../../pessoas/pessoa.service';
 import { Lancamento } from '../../core/model';
+import { LancamentoService } from '../lancamento.service';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -24,8 +27,10 @@ export class LancamentoCadastroComponent implements OnInit {
 
   constructor(
     private categoriaService: CategoriaService,
+    private lancamentoService: LancamentoService,
     private pessoaService: PessoaService,
-    private errorHandlerService: ErrorHandlerService
+    private errorHandlerService: ErrorHandlerService,
+    private messageService: MessageService
   ) {
   }
 
@@ -35,7 +40,16 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
-    console.log(this.lancamento);
+    this.lancamentoService.adicionar(this.lancamento)
+      .subscribe(() => {
+        this.messageService.add({
+          severity: 'success', summary: '', detail: 'Lançamento salvo com sucesso'
+        });
+        form.reset();
+        this.lancamento = new Lancamento();
+      }, (erro: any) => {
+        this.errorHandlerService.handle(erro);
+      });
   }
 
   carregarCategorias() {
