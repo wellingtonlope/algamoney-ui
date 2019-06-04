@@ -17,7 +17,8 @@ import { SegurancaRoutingModule } from './seguranca-routing.module';
     ButtonModule,
 
     SegurancaRoutingModule
-  ]
+  ],
+  providers: []
 })
 export class SegurancaModule {
 }

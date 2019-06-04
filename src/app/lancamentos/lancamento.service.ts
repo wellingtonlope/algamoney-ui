@@ -26,8 +26,6 @@ export class LancamentoService {
   }
 
   pesquisar(filtro: LancamentoFiltro): Observable<any> {
-    const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
-
     const dataInicio = filtro.dataVencimentoInicio ? moment(filtro.dataVencimentoInicio).format('YYYY-MM-DD') : '';
     const dataFim = filtro.dataVencimentoFim ? moment(filtro.dataVencimentoFim).format('YYYY-MM-DD') : '';
     const params = {
@@ -38,17 +36,15 @@ export class LancamentoService {
       size: filtro.itensPorPagina.toString()
     };
 
-    return this.http.get(`${this.lancamentosUrl}?resumo`, {headers, params});
+    return this.http.get(`${this.lancamentosUrl}?resumo`, {params});
   }
 
   excluir(codigo: number): Observable<any> {
-    const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
-    return this.http.delete(`${this.lancamentosUrl}/${codigo}`, {headers});
+    return this.http.delete(`${this.lancamentosUrl}/${codigo}`);
   }
 
   adicionar(lancamento: Lancamento): Observable<any> {
     const headers = {
-      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==',
       'Content-type': 'application/json'
     };
     return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento), {headers});
@@ -56,7 +52,6 @@ export class LancamentoService {
 
   atualizar(lancamento: Lancamento): Observable<any> {
     const headers = {
-      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==',
       'Content-type': 'application/json'
     };
     return this.http.put(`${this.lancamentosUrl}/${lancamento.codigo}`,
@@ -70,10 +65,7 @@ export class LancamentoService {
   }
 
   buscarPorCodigo(codigo: number): Observable<any> {
-    const headers = {
-      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
-    };
-    return this.http.get(`${this.lancamentosUrl}/${codigo}`, {headers}).pipe(
+    return this.http.get(`${this.lancamentosUrl}/${codigo}`).pipe(
       map(item => {
         const lancamento = item as Lancamento;
         this.converterStringsParaDatas([lancamento]);

@@ -12,8 +12,6 @@ export class CategoriaService {
   constructor(private http: HttpClient) { }
 
   listarTodas(): Observable<any> {
-    const headers = {Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='};
-
-    return this.http.get(this.categoriasUrl, {headers});
+    return this.http.get(this.categoriasUrl);
   }
 }

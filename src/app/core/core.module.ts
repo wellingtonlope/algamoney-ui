@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, ConfirmDialogModule, MessageService } from 'primeng/primeng';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ErrorHandlerService } from './error-handler.service';
@@ -13,6 +15,10 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
 import { AuthService } from '../seguranca/auth.service';
 
 registerLocaleData(localePt, 'pt');
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -23,7 +29,16 @@ registerLocaleData(localePt, 'pt');
     CommonModule,
     ToastModule,
     ConfirmDialogModule,
-    RouterModule
+    RouterModule,
+
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: [],
+      }
+    })
   ],
   exports: [
     NavbarComponent,

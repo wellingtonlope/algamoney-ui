@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import * as jwt_decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +33,13 @@ export class AuthService {
   }
 
   private armazenarToken(token: string) {
-    this.jwtPayload = jwt_decode(token);
-    localStorage.setItem('token', token);
+    const jwtHelperService: JwtHelperService = new JwtHelperService();
+    this.jwtPayload = jwtHelperService.decodeToken(token);
+    localStorage.setItem('access_token', token);
   }
 
   private carregarToken() {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('access_token');
     if (token) {
       this.armazenarToken(token);
     }
