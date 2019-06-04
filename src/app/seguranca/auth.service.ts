@@ -24,12 +24,27 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded'
     };
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
-    return this.http.post(this.oauthTokenUrl, body, {headers}).pipe(
+    return this.http.post(this.oauthTokenUrl, body, {headers, withCredentials: true}).pipe(
       map((item: any) => {
         this.armazenarToken(item.access_token);
         return item;
       })
     );
+  }
+
+  obterNovoAccessToken() {
+    const headers = {
+      Authorization: 'Basic YW5ndWxhcjpAbmd1bEByMA==',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+    const body = 'grant_type=refresh_token';
+    return this.http.post(this.oauthTokenUrl, body, {headers, withCredentials: true})
+      .pipe(
+        map((item: any) => {
+          this.armazenarToken(item.access_token);
+          return item;
+        })
+      );
   }
 
   temPermissao(permissao: string) {

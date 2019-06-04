@@ -15,4 +15,13 @@ export class NavbarComponent {
     private auth: AuthService
   ) {
   }
+
+  criarNovoAccessToken() {
+    this.auth.obterNovoAccessToken()
+      .subscribe(response => {
+        console.log(response);
+      }, error => {
+        console.error(error);
+      });
+  }
 }
