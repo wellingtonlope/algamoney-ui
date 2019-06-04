@@ -58,4 +58,19 @@ export class PessoaService {
     };
     return this.http.post(this.pessoasUrl, JSON.stringify(pessoa), {headers});
   }
+
+  atualizar(pessoa: Pessoa): Observable<any> {
+    const headers = {
+      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==',
+      'Content-type': 'application/json'
+    };
+    return this.http.put(`${this.pessoasUrl}/${pessoa.codigo}`, JSON.stringify(pessoa), {headers});
+  }
+
+  buscarPorCodigo(codigo: number): Observable<any> {
+    const headers = {
+      Authorization: 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg=='
+    };
+    return this.http.get(`${this.pessoasUrl}/${codigo}`, {headers});
+  }
 }
