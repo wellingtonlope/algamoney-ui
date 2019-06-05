@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 @Injectable()
 export class HttpsRequestInterceptor implements HttpInterceptor {
@@ -61,6 +62,7 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
       useClass: HttpsRequestInterceptor,
       multi: true,
     },
+    AuthGuard
   ]
 })
 export class SegurancaModule {
