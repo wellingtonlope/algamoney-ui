@@ -14,6 +14,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private jwtHelperService: JwtHelperService
   ) {
     this.carregarToken();
   }
@@ -47,13 +48,17 @@ export class AuthService {
       );
   }
 
+  isAccessTokenInvalido() {
+    const token = localStorage.getItem('access_token');
+    return !token || this.jwtHelperService.isTokenExpired(token);
+  }
+
   temPermissao(permissao: string) {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
   }
 
-  private armazenarToken(token: string) {
-    const jwtHelperService: JwtHelperService = new JwtHelperService();
-    this.jwtPayload = jwtHelperService.decodeToken(token);
+  armazenarToken(token: string) {
+    this.jwtPayload = this.jwtHelperService.decodeToken(token);
     localStorage.setItem('access_token', token);
   }
 

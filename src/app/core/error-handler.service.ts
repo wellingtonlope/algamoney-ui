@@ -18,7 +18,11 @@ export class ErrorHandlerService {
       msg = errorResponse;
     } else if (errorResponse instanceof HttpErrorResponse
       && errorResponse.status >= 400 && errorResponse.status < 500) {
-      msg = errorResponse.error[0].mensagemUsuario;
+      if (errorResponse.status === 401) {
+        msg = 'Erro na autenticação do usuário';
+      } else {
+        msg = errorResponse.error[0].mensagemUsuario;
+      }
     } else {
       msg = 'Erro ao processar serviço remoto. Tente novamente.';
       console.error('Ocorreu um erro', errorResponse);
