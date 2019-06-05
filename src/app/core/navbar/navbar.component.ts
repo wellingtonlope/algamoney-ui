@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../seguranca/auth.service';
 
@@ -12,16 +13,15 @@ export class NavbarComponent {
   exibindoMenu = false;
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {
   }
 
-  criarNovoAccessToken() {
-    this.auth.obterNovoAccessToken()
-      .subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.error(error);
+  logout() {
+    this.auth.limparAccessToken()
+      .subscribe(() => {
+        this.router.navigate(['/login']);
       });
   }
 }

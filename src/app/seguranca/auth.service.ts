@@ -10,6 +10,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   oauthTokenUrl = 'http://localhost:8080/oauth/token';
+  tokensRevokeUrl = 'http://localhost:8080/tokens/revoke';
   jwtPayload: any;
 
   constructor(
@@ -43,6 +44,17 @@ export class AuthService {
       .pipe(
         map((item: any) => {
           this.armazenarToken(item.access_token);
+          return item;
+        })
+      );
+  }
+
+  limparAccessToken() {
+    return this.http.delete(this.tokensRevokeUrl, {withCredentials: true})
+      .pipe(
+        map(item => {
+          localStorage.removeItem('access_token');
+          this.jwtPayload = null;
           return item;
         })
       );
