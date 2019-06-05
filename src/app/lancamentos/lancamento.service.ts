@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { map } from 'rxjs/operators';
 
 import { Lancamento } from '../core/model';
+import { environment } from '../../environments/environment';
 
 export class LancamentoFiltro {
   descricao: string;
@@ -20,9 +21,10 @@ export class LancamentoFiltro {
 })
 export class LancamentoService {
 
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  lancamentosUrl: string;
 
   constructor(private http: HttpClient) {
+    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
   }
 
   pesquisar(filtro: LancamentoFiltro): Observable<any> {

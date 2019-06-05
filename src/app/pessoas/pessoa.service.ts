@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { Pessoa } from '../core/model';
+import { environment } from '../../environments/environment';
 
 export class PessoaFiltro {
   nome: string;
@@ -15,9 +16,10 @@ export class PessoaFiltro {
 })
 export class PessoaService {
 
-  pessoasUrl = 'http://localhost:8080/pessoas';
+  pessoasUrl: string;
 
   constructor(private http: HttpClient) {
+    this.pessoasUrl = `${environment.apiUrl}/pessoas`;
   }
 
   pesquisar(filtro: PessoaFiltro): Observable<any> {
