@@ -59,7 +59,8 @@
             <td class="col-acoes-body">
               <a pButton icon="pi pi-pencil" [routerLink]="['/lancamentos', lancamento.codigo]" pTooltip="Editar" tooltipPosition="top"></a>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-              (click)="confirmarExclusao(lancamento)"></button>
+              (click)="confirmarExclusao(lancamento)"
+              [disabled]="!authService.temPermissao('ROLE_REMOVER_LANCAMENTO')"></button>
             </td>
           </tr>
         </ng-template>
