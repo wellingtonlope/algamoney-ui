@@ -8,6 +8,7 @@ import {
   HttpInterceptor,
   HttpRequest
 } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { ButtonModule, InputTextModule } from 'primeng/primeng';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -25,6 +26,7 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
   constructor(
     private jwtHelperService: JwtHelperService,
     private authService: AuthService,
+    private router: Router
   ) {
   }
 
@@ -34,9 +36,9 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
       this.authService.obterNovoAccessToken().subscribe(() => {
         this.loading = false;
         return next.handle(req);
-      }, error => {
-        console.error(error);
+      }, () => {
         this.loading = false;
+        this.router.navigate(['/login']);
         return next.handle(req);
       });
     }
